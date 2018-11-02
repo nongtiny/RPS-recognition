@@ -10,3 +10,11 @@ CS@SIT AI Project2018
 
 Feel free to use this noob ML
 
+# Dependencies
+- opencv 3
+- Python3.6
+- numpy
+- imutils
+- sklearn
+Installed from Ananconda
+
