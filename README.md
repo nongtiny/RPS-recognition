@@ -1,5 +1,6 @@
 # RPS-recognition
 CS@SIT AI Project2018
+พูลได้ครัฟพวกเวร ไม่เข้าใจตรงไหนคิดเอง ไอเหี้ยมอส
 
 - Using Keras tf backend for image classification with CNN
 - Training done on jupyter notebook file
