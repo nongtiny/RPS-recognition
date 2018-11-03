@@ -1,6 +1,5 @@
 import cv2
 from keras.models import load_model
-from imutils.video import VideoStream
 import numpy as np
 import evaluate as eva
 import calculate as cal
