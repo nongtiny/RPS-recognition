@@ -2,6 +2,7 @@ import cv2
 from keras.preprocessing.image import img_to_array
 import numpy as np
 
+
 def preProcessImg(leftPic, rightPic ):
     #imageL = cv2.imread("resultLeft.png") # put Left img file here
     #imageL = cv2.imread(leftPic)
