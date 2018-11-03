@@ -1,11 +1,7 @@
 import cv2
 from keras.models import load_model
 from imutils.video import VideoStream
-from threading import Thread
 import numpy as np
-import imutils
-import time
-import os
 import evaluate as eva
 import calculate as cal
 
@@ -31,13 +27,6 @@ tmpR = ''
 
 showL = True
 showR = True
-
-# def removeBG(frame):
-#     handmask = bgModel.apply(frame,learningRate=0)
-#     kernel = np.ones((3, 3))/9
-#     handmask = cv2.erode(handmask, kernel, iterations=1)
-#     res = cv2.bitwise_and(frame, frame, mask=handmask)
-#     return res
 
 
 while True:
