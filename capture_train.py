@@ -16,13 +16,13 @@ while(True):
     cv2.rectangle(frame, (0,100), (300,400), (0,255,0), 0)
 
     #Draw box to detect right side
-    cv2.rectangle(frame, (301,100), (640,400), (0,0,255), 0)
+    cv2.rectangle(frame, (301,101), (640,400), (0,0,255), 0)
 
     # Display the resulting frame
     cv2.imshow('frame',frame )
 
     roi = frame[100:400 , 0:300] #Interest left box area
-    roi2 = frame[100:400 , 301:640] #Interest right box area
+    roi2 = frame[102:400 , 302:640] #Interest right box area
 
     lower = np.array([0,20,70], dtype = np.uint8)
     upper = np.array([20,255,255], dtype = np.uint8)
@@ -31,13 +31,13 @@ while(True):
     mask = cv2.inRange(hsv, lower, upper)
     mask = cv2.dilate(mask, kernel, iterations  = 3)
     mask = cv2.GaussianBlur(mask, (5,5), 100)
-    mask = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR)
+
 
     hsv2 = cv2.cvtColor(roi2, cv2.COLOR_BGR2HSV)
     mask2 = cv2.inRange(hsv2, lower, upper)
     mask2 = cv2.dilate(mask2, kernel, iterations  = 3)
     mask2 = cv2.GaussianBlur(mask2, (5,5), 100)
-    mask2 = cv2.cvtColor(mask2, cv2.COLOR_GRAY2BGR)
+
 
     
     # convert the image into binary image
@@ -86,6 +86,10 @@ while(True):
         img_name = "testResultRight.png"
         cv2.imwrite(os.path.join('C:\\Users\\Administrator\\RPS\\', img_name), mask2)  
         print("{} written!".format(img_name))  
+    elif k & 0xFF == ord('t'): #testing
+        img_name = "testResult.png"
+        cv2.imwrite(os.path.join('C:\\Users\\Administrator\\RPS\\', img_name), mask2)  
+        print("{} written!".format(img_name)) 
    
         
 # When everything done, release the capture
