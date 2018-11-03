@@ -1,6 +1,7 @@
 # RPS-recognition
 CS@SIT AI Project2018
-พูลได้ครัฟพวกเวร ไม่เข้าใจตรงไหนคิดเอง ไอเหี้ยมอส
+
+## Must be dark bg (Ex. blue, black, green)
 
 - Using Keras tf backend for image classification with CNN
 - Training done on jupyter notebook file
