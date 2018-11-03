@@ -6,7 +6,7 @@ CS@SIT AI Project2018
 
 - Using Keras tf backend for image classification with CNN
 - Training done on jupyter notebook file
-
+- evaluate is the output of prediction
 - capture_play is the real-time prediction
 - capture_train use for snapping train images
 - The model we use is myModel02.h5
