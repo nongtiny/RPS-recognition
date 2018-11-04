@@ -1,15 +1,14 @@
 import cv2
 from keras.models import load_model
+from imutils.video import VideoStream
 import numpy as np
 import evaluate as eva
 import calculate as cal
 
-
-MODEL_PATH = "myModel02.h5"
+MODEL_PATH = "myModel04.h5"
 model = load_model(MODEL_PATH)
 capp = cv2.VideoCapture(0)
 capp2 = cv2.VideoCapture(0)
-time.sleep(2.0)
 kernel = np.ones((3, 3))/9
 
 cntL_P = 0
