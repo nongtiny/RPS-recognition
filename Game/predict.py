@@ -76,24 +76,26 @@ class Camera(object):
     def whowin(self):
         lw = "Left_win"
         rw = "Right_win"
+        tie = "Tie"
         tmpLeft = self.getLeft()
         tmpRight = self.getRight()
         
 
-        if ( (tmpLeft != "" and tmpRight != "") and (tmpLeft == tmpRight) ):
-            self.setResult("Tie")
-        elif ( (tmpLeft == "Left_scissor" and tmpRight == "") or (tmpLeft == "Left_scissor" and tmpRight == "Right_paper") ):
-            self.setResult(lw)
-        elif ( (tmpLeft == "Left_paper" and tmpRight == "") or (tmpLeft == "Left_paper" and tmpRight == "Right_rock") ):
-            self.setResult(lw)
-        elif ( (tmpLeft == "Left_rock" and tmpRight == "") or (tmpLeft == "Left_rock" and tmpRight == "Right_scissor") ):
-            self.setResult(lw)
-        elif ( (tmpLeft == "" and tmpRight == "Right_paper") or (tmpLeft == "Left_rock" and tmpRight == "Right_paper") ):
-            self.setResult(rw)
-        elif ( (tmpLeft == "" and tmpRight == "Right_rock") or (tmpLeft == "Left_scissor" and tmpRight == "Right_rock") ):
-            self.setResult(rw)
-        elif ( (tmpLeft == "" and tmpRight == "Right_scissor") or (tmpLeft == "Left_paper" and tmpRight == "Right_scissor") ):
-            self.setResult(rw)
+        if (tmpLeft != "" and tmpRight != ""):
+            if ((tmpLeft == "Left_scissor") and (tmpRight == "Right_scissor")) or ((tmpLeft == "Left_rock") and (tmpRight == "Right_rock")) or ((tmpLeft == "Left_paper") and (tmpRight == "Right_paper")):
+                self.setResult(tie)
+            elif ( (tmpLeft == "Left_scissor" and tmpRight == "") or (tmpLeft == "Left_scissor" and tmpRight == "Right_paper") ):
+                self.setResult(lw)
+            elif ( (tmpLeft == "Left_paper" and tmpRight == "") or (tmpLeft == "Left_paper" and tmpRight == "Right_rock") ):
+                self.setResult(lw)
+            elif ( (tmpLeft == "Left_rock" and tmpRight == "") or (tmpLeft == "Left_rock" and tmpRight == "Right_scissor") ):
+                self.setResult(lw)
+            elif ( (tmpLeft == "" and tmpRight == "Right_paper") or (tmpLeft == "Left_rock" and tmpRight == "Right_paper") ):
+                self.setResult(rw)
+            elif ( (tmpLeft == "" and tmpRight == "Right_rock") or (tmpLeft == "Left_scissor" and tmpRight == "Right_rock") ):
+                self.setResult(rw)
+            elif ( (tmpLeft == "" and tmpRight == "Right_scissor") or (tmpLeft == "Left_paper" and tmpRight == "Right_scissor") ):
+                self.setResult(rw)
 
     def run_camera(self):
         _,frameEval = capp.read()
@@ -137,7 +139,6 @@ class Camera(object):
                 self.setRight(resultRight)
                 frame = cv2.putText(frame, resultLeft +" " + resultRight, (200, 435), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
                 print(resultLeft, resultRight)
-                print(self.getResult())
             if (checkL == [] or len(checkL[0]) < 60 ) and (checkR == [] or len(checkR[0]) < 60 ):
                 self.showL = True
                 self.showR = True
@@ -147,13 +148,13 @@ class Camera(object):
             elif (checkL == [] or len(checkL[0]) < 60 ):
                 self.showL = True
                 self.showR = False
-                frame = cv2.putText(frame, "Hand is missing on the left side", (200, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+                frame = cv2.putText(frame, "Hand is missing on the right side", (200, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
                 
             # No hand right side
             elif (checkR == [] or len(checkR[0]) < 60 ):
                 self.showR = True
                 self.showL = False
-                frame = cv2.putText(frame, "Hand is missing on the right side", (200, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+                frame = cv2.putText(frame, "Hand is missing on the left side", (200, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
                 
             #------------- Find Result ----------------------
             else:

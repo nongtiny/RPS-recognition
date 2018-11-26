@@ -24,6 +24,10 @@ tie_show = pygame.image.load(os.path.join('C:\\Users\\Administrator\\RPS\\Game\\
 team_show = [pygame.image.load(os.path.join('C:\\Users\\Administrator\\RPS\\Game\\show\\', 'team_0.png')),
             pygame.image.load(os.path.join('C:\\Users\\Administrator\\RPS\\Game\\show\\', 'team_1.png'))]
 
+left_show = pygame.image.load(os.path.join('C:\\Users\\Administrator\\RPS\\Game\\', 'ResultLeft.png'))
+
+right_show = pygame.image.load(os.path.join('C:\\Users\\Administrator\\RPS\\Game\\', 'ResultRight.png'))
+
 riding_1 = pygame.image.load(os.path.join('C:\\Users\\Administrator\\RPS\\Game\\Rider\\', 'p1_0.png'))
 riding_2 =  pygame.image.load(os.path.join('C:\\Users\\Administrator\\RPS\\Game\\Rider\\', 'p2_0.png'))
 
@@ -99,6 +103,8 @@ class showText(object):
         self.tie = False
         self.team = True
         self.finish = False
+        self.left = False
+        self.right = False
         
     def reset(self):
         self.time = 0
@@ -134,7 +140,7 @@ speed = 0
 
 #Font
 pygame.font.init() 
-myfont = pygame.font.SysFont('Comic Sans MS', 30)
+myfont = pygame.font.SysFont('Comic Sans MS', 76)
 textLeft_R = myfont.render("Rock", False, (0, 0, 0))
 textLeft_P = myfont.render("Paper", False, (0, 0, 0))
 textLeft_S = myfont.render("Scissors", False, (0, 0, 0))
@@ -229,20 +235,20 @@ def redrawGameWindow():
 
     if show.team:
         win.blit(team_show[real_background.daytime % 2], (0, 30))
-
-     if run_camera.getLeft() == "Left_scissor":
-        win.blit(textLeft_S, (100, 50))
+    
+    if run_camera.getLeft() == "Left_scissor":
+        win.blit(textLeft_S, (50, 150))
     elif run_camera.getLeft() == "Left_paper":
-        win.blit(textLeft_P, (100, 50))
+        win.blit(textLeft_P, (100, 150))
     elif run_camera.getLeft() == "Left_rock":
-        win.blit(textLeft_R, (100, 50))
+        win.blit(textLeft_R, (100, 150))
     
     if run_camera.getRight() == "Right_scissor":
-        win.blit(textLeft_S, (1000, 50))
+        win.blit(textLeft_S, (900, 150))
     elif run_camera.getRight() == "Right_paper":
-        win.blit(textLeft_P, (1000, 50))
+        win.blit(textLeft_P, (950, 150))
     elif run_camera.getRight() == "Right_rock":
-        win.blit(textLeft_R, (1000, 50))
+        win.blit(textLeft_R, (950, 150))
 
 
     pygame.display.update()
@@ -267,6 +273,8 @@ while run:
                 run_camera.setRight("")
                 run_camera.setResult("")
                 run_camera.setToggle(0)
+                show.left = False
+                show.right = False
                 show.time = 0
                 
         else:
@@ -307,6 +315,7 @@ while run:
                 run_camera.setShowL(True)
                 run_camera.setShowR(True)  
                 run_camera.setToggle(-1) 
+            
             elif run_camera.getResult() == "Tie":
                 show.tie = True
                 run_camera.setShowL(True)
