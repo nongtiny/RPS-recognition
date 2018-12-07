@@ -9,7 +9,7 @@ CS@SIT AI Project2018
 - evaluate is the output of prediction
 - capture_play is the real-time prediction
 - capture_train use for snapping train images
-- The model we use is myModel02.h5
+- The model we use is myModel04.h5
 
 Feel free to use this noob ML
 
