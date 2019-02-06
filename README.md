@@ -1,6 +1,13 @@
 # RPS-recognition
 CS@SIT AI Project2018
 
+## Start the game
+Python
+```
+cd Game
+python game.py
+```
+
 ### Must be dark bg (Ex. blue, black, green)
 ### This project based on Anaconda
 
